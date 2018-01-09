@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-
+.libPaths('/home/flynnb/R')
 # Load libraries
 library(ape)
 library("RColorBrewer", character.only=TRUE)

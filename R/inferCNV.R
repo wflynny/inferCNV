@@ -466,6 +466,13 @@ infer_cnv <- function(data,
 
     # Smooth the data with gene windows
     data_smoothed <- smooth_window(data, window_length)
+    logging::loginfo(paste("::infer_cnv:Data Smoothed, ",
+                           "new dimensions (r,c) = ",
+                           paste(dim(data_smoothed), collapse=","),
+                           " Total=", sum(data_smoothed),
+                           " Min=", min(data_smoothed),
+                           " Max=", max(data_smoothed),
+                           ".", sep=""))
     data <- NULL
     logging::loginfo(paste("::infer_cnv:Smoothed data.", sep=""))
     # Plot incremental steps.
@@ -478,6 +485,13 @@ infer_cnv <- function(data,
     # Center cells/observations after smoothing. This helps reduce the
     # effect of complexity.
     data_smoothed <- center_smoothed(data_smoothed)
+    logging::loginfo(paste("::infer_cnv:Centered smoothed data, ",
+                           "new dimensions (r,c) = ",
+                           paste(dim(data_smoothed), collapse=","),
+                           " Total=", sum(data_smoothed),
+                           " Min=", min(data_smoothed),
+                           " Max=", max(data_smoothed),
+                           ".", sep=""))
     # Plot incremental steps.
     if (plot_steps){
         plot_step(data=data_smoothed,
