@@ -473,6 +473,7 @@ infer_cnv <- function(data,
                            " Min=", min(data_smoothed),
                            " Max=", max(data_smoothed),
                            ".", sep=""))
+    write.csv(data_smoothed, "data.smoothed.csv")
     data <- NULL
     logging::loginfo(paste("::infer_cnv:Smoothed data.", sep=""))
     # Plot incremental steps.
