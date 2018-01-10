@@ -44,6 +44,8 @@ average_over_ref <- function(average_data,
     }
     # Remove the Max and min averages of the reference groups from the
     # For each gene.
+    write.csv(average_max, 'average.max.csv')
+    write.csv(average_min, 'average.min.csv')
     for(gene_i in 1:nrow(average_data)){
         current_col <- average_data[gene_i, ]
         i_max <- which(current_col > average_max[gene_i])
@@ -493,6 +495,7 @@ infer_cnv <- function(data,
                            " Min=", min(data_smoothed),
                            " Max=", max(data_smoothed),
                            ".", sep=""))
+    write.csv(data_smoothed, "data.smoothed.centered.csv")
     # Plot incremental steps.
     if (plot_steps){
         plot_step(data=data_smoothed,
@@ -513,6 +516,7 @@ infer_cnv <- function(data,
     data_smoothed <- average_over_ref(average_data=data_smoothed,
                                                 ref_observations=i_ref_obs,
                                                 ref_groups=groups_ref)
+    write.csv(data_smoothed, "data.smoothed.centered.refremoved.csv")
     logging::loginfo(paste("::infer_cnv:Remove average, ",
                            "new dimensions (r,c) = ",
                            paste(dim(data_smoothed), collapse=","),
