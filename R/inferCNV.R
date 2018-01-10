@@ -29,7 +29,9 @@ average_over_ref <- function(average_data,
     average_min <- NULL
     average_reference_obs <- average_data[,ref_observations, drop=FALSE]
     # Reference gene within reference groups
+    print(ref_groups)
     for (ref_group in ref_groups){
+        print(ref_group)
         grp_average <- rowMeans(average_reference_obs[,ref_group,
                                                       drop=FALSE],
                                 na.rm=TRUE)
